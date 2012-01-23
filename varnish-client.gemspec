@@ -6,8 +6,8 @@ Gem::Specification.new do |spec|
   spec.files        = [
     'lib/varnish/client.rb',
   ]
-  spec.author       = 'mono'
-  spec.email        = 'mono@monoweb.info'
-  spec.homepage     = 'http://monoweb.info/'
+  spec.author       = 'morimorihoge'
+  spec.email        = 'morimori@ht.sfc.keio.ac.jp'
+  spec.homepage     = 'https://github.com/morimorihoge'
 end
 

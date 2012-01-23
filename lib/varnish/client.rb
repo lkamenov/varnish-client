@@ -1,4 +1,3 @@
-
 require 'net/http'
 
 module Varnish
@@ -10,6 +9,13 @@ module Varnish
 
     def purge(cmd)
       req = Purge.new(cmd)
+      req['Host'] = @target.host
+      res = @http.request(req)
+      res.code == '200'
+    end
+
+    def ban(cmd)
+      req = Ban.new(cmd)
       req['Host'] = @target.host
       res = @http.request(req)
       res.code == '200'
@@ -27,6 +33,12 @@ module Varnish
 
     class Purge < Net::HTTPRequest
       METHOD            = 'PURGE'
+      REQUEST_HAS_BODY  = false
+      RESPONSE_HAS_BODY = true
+    end
+
+    class Ban < Net::HTTPRequest
+      METHOD            = 'BAN'
       REQUEST_HAS_BODY  = false
       RESPONSE_HAS_BODY = true
     end
